@@ -19,3 +19,4 @@ spec:
         image: yandex/clickhouse-server
         ports:
         - containerPort: 8123
+        - containerPort: 9000

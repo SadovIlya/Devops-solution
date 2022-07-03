@@ -36,6 +36,7 @@ cat NYPD_Complaint_Data_Current__Year_To_Date_.tsv \
       X_COORD_CD                                  AS NY_x_coordinate,
       Y_COORD_CD                                  AS NY_y_coordinate,
       Latitude,
-      Longitude
+      Longitude,
+      Lat_Lon
     FROM input" \
   | clickhouse-client --query='INSERT INTO NYPD_Complaint FORMAT TSV'
