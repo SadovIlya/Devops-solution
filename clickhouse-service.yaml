@@ -14,8 +14,4 @@ spec:
     - port: 8123
       targetPort: 8123      
       nodePort: 32123
-<<<<<<< HEAD
       name: http
-=======
-      name: http
->>>>>>> fef6dedb559dce1da03377ed544c171ffcd5473b
