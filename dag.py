@@ -9,12 +9,12 @@ from airflow.utils.dates import days_ago
 
 def insert():
     client = Client('54.202.79.82', port=32129 ) 
-    result = client.execute("INSERT INTO default.geocoded_random (uniq_lat_lon) SELECT DISTINCT NYPD_Complaint.Lat_Lon FROM NYPD_Complaint")
+    result = client.execute("INSERT INTO default.geocoded_random (Latitude, Longitude) SELECT DISTINCT Latitude, Longitude FROM NYPD_Complaint")
     return(result)
 
 def update():
     client = Client('54.202.79.82', port=32129 ) 
-    result = client.execute("ALTER TABLE default.geocoded_random UPDATE random_string = rand()  WHERE uniq_lat_lon IS NOT NULL")
+    result = client.execute("ALTER TABLE default.geocoded_random UPDATE random = rand()  WHERE Latitude IS NOT NULL")
     return(result)
 
 def truncate():
