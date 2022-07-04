@@ -1,16 +1,23 @@
 SELECT DISTINCT Lat_Lon FROM default.NYPD_Complaint
 
-INSERT INTO default.geocoded_random (uniq_lat_lon) SELECT DISTINCT default.NYPD_Complaint.Lat_Lon FROM default.NYPD_Complaint 
+INSERT INTO default.geocoded_random (uniq_lat_lon) SELECT DISTINCT NYPD_Complaint.Lat_Lon FROM NYPD_Complaint 
 
-INSERT INTO default.geocoded_random (random_string) VALUES ('fas')
+UPDATE geocoded_random SET random_string = rand() WHERE uniq_lat_lon IS NOT NULL
 
 
+INSERT INTO default.geocoded_random (uniq_lat_lon) VALUES ('fas')
+
+SELECT COUNT(DISTINCT NYPD_Complaint.Lat_Lon)  FROM NYPD_Complaint
+
+SELECT COUNT(*)  FROM geocoded_random
 
 
 TRUNCATE TABLE default.geocoded_random
 
 SELECT uniq_lat_lon, random_string
-FROM `default`.geocoded_random
+FROM geocoded_random
 
-SELECT fuzzBits(materialize('abacaba'), 0.1)
-FROM numbers(3)
+
+ALTER TABLE default.geocoded_random UPDATE random_string = rand()  WHERE uniq_lat_lon IS NOT NULL
+
+UPDATE default.geocoded_random SET random_string = rand() WHERE uniq_lat_lon IS NOT NULL
